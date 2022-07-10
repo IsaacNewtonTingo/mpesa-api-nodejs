@@ -73,7 +73,7 @@ app.get("/make-payment", access, (req, res) => {
         PartyA: 254724753175,
         PartyB: 174379,
         PhoneNumber: 254724753175,
-        CallBackURL: "https://e2d4-41-80-96-175.in.ngrok.io/m-pesa-response",
+        CallBackURL: "https://e2d4-41-80-96-175.in.ngrok.io/response",
         AccountReference: "CompanyXLTD",
         TransactionDesc: "Payment of X",
       },
@@ -88,6 +88,6 @@ app.get("/make-payment", access, (req, res) => {
   );
 });
 
-app.post("/m-pesa-response", (req, res) => {
+app.post("/response", (req, res) => {
   console.log(req);
 });
