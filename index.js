@@ -7,11 +7,13 @@ require("dotenv").config();
 const consumerKey = process.env.CONSUMER_KEY;
 const consumerSecret = process.env.CONSUMER_SECRET;
 
-app.listen(8000, (err, live) => {
+let port = process.env.PORT;
+
+app.listen(port, (err, live) => {
   if (err) {
     console.log(err);
   }
-  console.log("Server running on port 8000");
+  console.log(`Server running on port ${port}`);
 });
 
 //routes
