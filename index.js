@@ -1,8 +1,16 @@
 const express = require("express");
+const app = express();
+
 const request = require("request");
 const datetime = require("node-datetime");
-const app = express();
+
+var bodyParser = require("body-parser");
+app.use(bodyParser.json());
+
 require("dotenv").config();
+
+const cors = require("cors");
+app.use(cors());
 
 const consumerKey = process.env.CONSUMER_KEY;
 const consumerSecret = process.env.CONSUMER_SECRET;
@@ -75,7 +83,7 @@ app.get("/make-payment", access, (req, res) => {
         PartyA: 254724753175,
         PartyB: 174379,
         PhoneNumber: 254724753175,
-        CallBackURL: "https://m-pesa-backend.herokuapp.com/response",
+        CallBackURL: "https://fca4-105-163-0-152.eu.ngrok.io/response",
         AccountReference: "CompanyXLTD",
         TransactionDesc: "Payment of X",
       },
@@ -91,5 +99,5 @@ app.get("/make-payment", access, (req, res) => {
 });
 
 app.post("/response", (req, res) => {
-  console.log(req);
+  console.log(req.body.Body.stkCallback.CallbackMetadata);
 });
